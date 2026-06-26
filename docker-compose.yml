@@ -1,0 +1,17 @@
+# Paseo + Claude Code — for non-Unraid hosts (any Docker box).
+# Open http://localhost:6767 after `docker compose up -d`.
+# Change PASEO_PASSWORD before exposing the port anywhere.
+services:
+  paseo:
+    image: ghcr.io/maart3nl/unraid-paseo:latest
+    container_name: paseo
+    restart: unless-stopped
+    ports:
+      - "6767:6767"
+    environment:
+      PASEO_PASSWORD: "change-me"
+      # ANTHROPIC_API_KEY: "sk-ant-..."   # optional; or run `claude` once in the container
+      # PASEO_HOSTNAMES: "paseo.example.com,.lan"
+    volumes:
+      - ./paseo-home:/home/paseo   # daemon state + agent credentials (.claude, .paseo)
+      - ./workspace:/workspace     # code the agents can read/write

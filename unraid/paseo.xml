@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Paseo</Name>
+  <Repository>ghcr.io/maart3nl/unraid-paseo:latest</Repository>
+  <Registry>https://github.com/Maart3nL/unraid-paseo/pkgs/container/unraid-paseo</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/Maart3nL/unraid-paseo/issues</Support>
+  <Project>https://paseo.sh/</Project>
+  <Overview>Paseo is an open-source orchestrator for coding agents (Claude Code, Codex, OpenCode and more). This image bakes in the Claude Code CLI, runs the Paseo daemon headless and serves the bundled web UI on port 6767 — open it in a browser or connect a Paseo desktop/mobile client.&#13;&#10;&#13;&#10;Set a password before exposing the port. Mount your code under /workspace; agent credentials and daemon state persist under /home/paseo. To sign Claude Code in, open the container console (as user 'paseo') and run: claude</Overview>
+  <Category>Productivity: Tools: Other:</Category>
+  <WebUI>http://[IP]:[PORT:6767]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/Maart3nL/unraid-paseo/main/unraid/paseo.xml</TemplateURL>
+  <Icon>https://avatars.githubusercontent.com/u/259503569?v=4</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="WebUI Port" Target="6767" Default="6767" Mode="tcp" Description="Paseo daemon + web UI port." Type="Port" Display="always" Required="true" Mask="false">6767</Config>
+  <Config Name="Password (PASEO_PASSWORD)" Target="PASEO_PASSWORD" Default="" Mode="" Description="Password required to connect to the daemon/web UI. ALWAYS set this before exposing the port. Stored hashed at startup." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Paseo Home" Target="/home/paseo" Default="/mnt/user/appdata/paseo" Mode="rw" Description="Persistent daemon state plus agent credentials/config (.paseo, .claude, etc). Container runs as uid/gid 1000." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/paseo</Config>
+  <Config Name="Workspace" Target="/workspace" Default="/mnt/user/code" Mode="rw" Description="Code that Paseo and the agents it launches can read and write." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/code</Config>
+  <Config Name="Anthropic API Key (optional)" Target="ANTHROPIC_API_KEY" Default="" Mode="" Description="Optional. Pass an API key to Claude Code instead of interactive login. Leave blank to sign in with 'claude' from the container console." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Allowed Hostnames (optional)" Target="PASEO_HOSTNAMES" Default="" Mode="" Description="Comma-separated DNS names you use to reach this container behind a reverse proxy, e.g. paseo.example.com,.lan . IPs and localhost are allowed by default." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>

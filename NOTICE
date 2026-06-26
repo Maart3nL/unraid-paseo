@@ -1,0 +1,19 @@
+This repository contains only packaging files (Dockerfile, GitHub Actions
+workflow, Unraid template, compose file, docs). Those packaging files are
+licensed under the MIT License (see LICENSE).
+
+The container image produced from this Dockerfile bundles third-party software,
+each under its own license:
+
+* Paseo (base image ghcr.io/getpaseo/paseo, and @getpaseo/server,
+  @getpaseo/cli) — AGPL-3.0. Source: https://github.com/getpaseo/paseo
+  The published image is a redistribution of that AGPL-licensed software; the
+  corresponding source is available at the link above.
+
+* Claude Code (@anthropic-ai/claude-code) — proprietary, distributed by
+  Anthropic under its own Commercial Terms of Service. It is installed from npm
+  at build time and is not relicensed by this project.
+  See https://www.anthropic.com/legal/commercial-terms
+
+This project is an unofficial, community packaging. It is not affiliated with,
+endorsed by, or supported by Paseo (getpaseo) or Anthropic.
