@@ -15,7 +15,8 @@ clients. State and agent credentials persist on disk.
 
 ## What's in the box
 
-- Official Paseo daemon + web UI (`ghcr.io/getpaseo/paseo`) on `:6767`
+- Paseo daemon + bundled web UI on `:6767` (built from the official
+  `@getpaseo/server` + `@getpaseo/cli` npm packages)
 - `@anthropic-ai/claude-code` pre-installed
 - Multi-arch image (`linux/amd64`, `linux/arm64`) auto-built & published to GHCR
 - Runs as non-root user `paseo` (uid/gid **1000**)
@@ -131,7 +132,7 @@ Docker notes: <https://github.com/getpaseo/paseo/blob/main/docs/docker.md>
 docker build -t paseo-claude .
 # pin versions:
 docker build \
-  --build-arg PASEO_TAG=0.1.101 \
+  --build-arg PASEO_VERSION=0.1.101 \
   --build-arg CLAUDE_CODE_VERSION=2.1.193 \
   -t paseo-claude:pinned .
 ```

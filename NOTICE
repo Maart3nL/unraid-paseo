@@ -5,10 +5,11 @@ licensed under the MIT License (see LICENSE).
 The container image produced from this Dockerfile bundles third-party software,
 each under its own license:
 
-* Paseo (base image ghcr.io/getpaseo/paseo, and @getpaseo/server,
-  @getpaseo/cli) — AGPL-3.0. Source: https://github.com/getpaseo/paseo
-  The published image is a redistribution of that AGPL-licensed software; the
-  corresponding source is available at the link above.
+* Paseo (@getpaseo/server, @getpaseo/cli, installed from npm at build time) —
+  AGPL-3.0. Source: https://github.com/getpaseo/paseo
+  The published image redistributes that AGPL-licensed software; the
+  corresponding source is available at the link above. The Docker build in this
+  repo mirrors Paseo's own docker/base definition.
 
 * Claude Code (@anthropic-ai/claude-code) — proprietary, distributed by
   Anthropic under its own Commercial Terms of Service. It is installed from npm
